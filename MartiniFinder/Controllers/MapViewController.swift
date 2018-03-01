@@ -41,10 +41,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Lifecycle
     
+    @objc func backTapped(){
+        self.tabBarController?.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setNavigationItem()
+        
+        let backItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
+        self.navigationItem.leftBarButtonItem = backItem
         
         // Stylize tabBar
         self.tabBarController?.tabBar.tintColor = UIColor.white
